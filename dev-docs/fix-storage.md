@@ -49,3 +49,39 @@ Here's what you need to do to fix this issue:
 4. **Rebuild the Project**: Finally, rebuild your Flutter project by running `flutter clean` followed by `flutter run` from your project directory.
 
 Make sure that the `FileProvider` is configured correctly and that the paths are properly defined. If you're still facing issues, double-check that there are no typos or inconsistencies between the authority string in the `FileProvider` and the actual package name of your application [1][6][8].
+
+-------------------
+O erro "java.lang.IllegalArgumentException: Couldn't find meta-data for provider with authority" geralmente ocorre quando você está tentando acessar um provedor de arquivos (FileProvider) em seu aplicativo Android, mas não configurou corretamente o provedor de arquivos em seu arquivo de manifesto.
+
+Para resolver esse problema, você precisa garantir que tenha configurado corretamente o provedor de arquivos em seu arquivo AndroidManifest.xml. Aqui está um exemplo de como configurar um provedor de arquivos no AndroidManifest.xml:
+
+```xml
+<application>
+    ...
+    <provider
+        android:name="androidx.core.content.FileProvider"
+        android:authorities="com.example.igreja_browser.flutter_inappwebview.fileprovider"
+        android:exported="false"
+        android:grantUriPermissions="true">
+        <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/provider_paths" />
+    </provider>
+    ...
+</application>
+```
+
+Além disso, você precisa criar um arquivo XML chamado `provider_paths.xml` na pasta `res/xml` do seu projeto, e configurar as configurações de caminho do provedor de arquivos nele. Aqui está um exemplo de `provider_paths.xml`:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-path
+        name="external_files"
+        path="." />
+</paths>
+```
+
+Certifique-se de substituir `"com.example.igreja_browser.flutter_inappwebview.fileprovider"` pelo nome do pacote do seu aplicativo.
+
+Depois de configurar corretamente o provedor de arquivos em seu AndroidManifest.xml e `provider_paths.xml`, o erro deve ser resolvido e você deve conseguir acessar o provedor de arquivos sem problemas.
