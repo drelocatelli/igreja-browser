@@ -2,6 +2,21 @@
 
 A new Flutter project.
 
+* Update dependencies versions
+```sh
+flutter pub upgrade
+```
+
+* Run on device
+```sh
+flutter run --device-connection attached
+```
+
+* Clean old and unused cached files
+```sh
+flutter clean
+```
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
