@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await Permission.camera.request();
@@ -88,10 +87,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  
-  
+
+
   InAppWebView webView = InAppWebView(
-    initialUrlRequest: URLRequest(url: Uri.parse("http://192.168.1.2:85/stage-view/text2")),
+    initialUrlRequest: URLRequest(url: Uri.parse("https://www.faspbr.com.br")),
   );
 
 
